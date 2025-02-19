@@ -3,11 +3,11 @@ const container = document.querySelector("#container");
 const cards = [];
 
 for (let i = 1; i <= 10; i++) {
-  cards[i] = document.querySelector(`#card${i}`);
+  const card = document.querySelector(`#card${i}`);
+  cards[i] = card;
+  window[`card${i}`] = card; // Assign each card to a global variable
   //   buttons[i].addEventListener("click", () => {});
 }
-
-// console.log(cards);
 
 const myLibrary = [];
 
@@ -19,7 +19,7 @@ function Book(title, author, year, pages, read) {
   this.read = read;
 }
 
-// const bible = new Book("Bible", "God", 100, 777, true);
+const bible = new Book("Bible", "God", 100, 777, true);
 // console.table(bible);
 
 function addBookToLibrary() {
