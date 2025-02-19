@@ -11,15 +11,14 @@ for (let i = 1; i <= 10; i++) {
 
 const myLibrary = [];
 
-function Book(title, author, year, pages, read) {
+function Book(title, author, year, read) {
   this.title = title;
   this.author = author;
   this.year = year;
-  this.pages = pages;
   this.read = read;
 }
 
-const bible = new Book("Bible", "God", 100, 777, true);
+const bible = new Book("Bible", "God", 100, true);
 // console.table(bible);
 
 function addBookToLibrary() {

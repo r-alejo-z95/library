@@ -18,6 +18,9 @@ h1 {
   justify-content: center;
   gap: 20px;
   padding: 20px;
+  width: 100%;
+  max-width: 1200px;
+  box-sizing: border-box;
 }
 
 .card {
@@ -25,16 +28,35 @@ h1 {
   border: 1px solid #ddd;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  width: 200px;
-  height: 300px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   padding: 20px;
   transition: transform 0.2s;
+  box-sizing: border-box;
+  flex: 1 1 200px;
+  max-width: 300px;
 }
 
 .card:hover {
   transform: scale(1.05);
+}
+
+.card .title {
+  width: 100%;
+  text-align: center;
+}
+
+.card .title h2 {
+  font-size: 1.5em;
+  margin: 0;
+  color: #333;
+}
+
+.card .author p,
+.card .year p,
+.card .read p {
+  margin: 5px 0;
+  color: #666;
 }
