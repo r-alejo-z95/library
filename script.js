@@ -55,6 +55,16 @@ myLibrary.forEach((book) => {
   container.appendChild(card);
 });
 
+const newBookBtn = document.createElement("div");
+newBookBtn.className = "card new-book-card";
+
+const btnTitle = document.createElement("div");
+btnTitle.className = "title";
+btnTitle.innerHTML = "<h2>Add new book</h2>";
+
+newBookBtn.appendChild(btnTitle);
+container.appendChild(newBookBtn);
+
 function addBookToLibrary() {
   // take params, create a book then store it in the array
 }
