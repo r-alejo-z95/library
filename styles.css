@@ -16,6 +16,7 @@ h1 {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  align-content: center;
   gap: 20px;
   padding: 20px;
   width: 100%;
@@ -23,7 +24,8 @@ h1 {
   box-sizing: border-box;
 }
 
-.card {
+.card,
+.new-book-card {
   background-color: #fff;
   border: 1px solid #ddd;
   border-radius: 8px;
@@ -39,8 +41,32 @@ h1 {
   max-width: 300px;
 }
 
+.newBookBtnContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.new-book-card {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 3em;
+}
+
+.new-book-card::before {
+  content: "+";
+}
+
 .card:hover {
   transform: scale(1.05);
+}
+
+.read:hover {
+  transform: scale(1.03);
+  background-color: #e0e0e0;
 }
 
 .card .title {
@@ -59,4 +85,14 @@ h1 {
 .card .read p {
   margin: 5px 0;
   color: #666;
+}
+
+.read {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 2px;
+  cursor: pointer;
+  transition: 0.1s;
 }

@@ -1,3 +1,4 @@
+//Book object constructor
 function Book(title, author, year, read) {
   this.title = title;
   this.author = author;
@@ -5,8 +6,12 @@ function Book(title, author, year, read) {
   this.read = read;
 }
 
+//Initiate and display books
+
+//Get container
 const container = document.getElementById("container");
 
+//Display demo books
 const demoBook1 = new Book(
   "A Game of Thrones",
   "George R. R. Martin",
@@ -26,6 +31,7 @@ const demoBook3 = new Book(
   false
 );
 
+//Create book cards to display in the container
 const myLibrary = [demoBook1, demoBook2, demoBook3];
 
 myLibrary.forEach((book) => {
@@ -55,16 +61,17 @@ myLibrary.forEach((book) => {
   container.appendChild(card);
 });
 
+//Add new book button
+const newBookBtnCont = document.createElement("div");
+newBookBtnCont.className = "newBookBtnCont";
+
 const newBookBtn = document.createElement("div");
 newBookBtn.className = "card new-book-card";
 
-const btnTitle = document.createElement("div");
-btnTitle.className = "title";
-btnTitle.innerHTML = "<h2>Add new book</h2>";
+newBookBtnCont.appendChild(newBookBtn);
+container.appendChild(newBookBtnCont);
 
-newBookBtn.appendChild(btnTitle);
-container.appendChild(newBookBtn);
-
+//Add new book function
 function addBookToLibrary() {
   // take params, create a book then store it in the array
 }
