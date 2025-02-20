@@ -56,6 +56,17 @@ myLibrary.forEach((book) => {
   const read = document.createElement("div");
   read.className = "read";
   read.innerHTML = `<p>Read: ${book.read === true ? "Yes" : "No"}</p>`;
+
+  const lightGreen = "#90EE90",
+    lightRed = "#FFCCCB";
+
+  read.style.backgroundColor = book.read === true ? lightGreen : lightRed;
+  if (book.read) {
+    read.onclick = () => {
+      read.style.backgroundColor = lightRed;
+      // book.read = false;
+    };
+  }
   card.appendChild(read);
 
   container.appendChild(card);
