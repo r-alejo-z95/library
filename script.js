@@ -62,16 +62,19 @@ myLibrary.forEach((book) => {
 });
 
 //Add new book button
-const newBookBtnCont = document.createElement("div");
-newBookBtnCont.className = "newBookBtnCont";
-
 const newBookBtn = document.createElement("div");
-newBookBtn.className = "card new-book-card";
+newBookBtn.className = "new-book-card";
 
-newBookBtnCont.appendChild(newBookBtn);
-container.appendChild(newBookBtnCont);
+const plusBtn = document.createElement("h2");
+plusBtn.className = "plus-button";
+plusBtn.innerText = "📚";
+
+newBookBtn.appendChild(plusBtn);
+container.appendChild(newBookBtn);
 
 //Add new book function
-function addBookToLibrary() {
-  // take params, create a book then store it in the array
-}
+
+// take params, create a book then store it in the array
+plusBtn.onclick = () => {
+  container.style.backgroundColor = "red";
+};
