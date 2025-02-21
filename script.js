@@ -126,12 +126,17 @@ plusBtn.onclick = () => {
         const year = document.getElementById("year").value;
         const read = document.getElementById("read").checked;
 
-        const newBook = new Book(title, author, year, read);
-        myLibrary.push(newBook);
-        renderLibrary();
+        if (!title || !author || !year) {
+          alert("Please fill all the fields!");
+          return false;
+        } else {
+          const newBook = new Book(title, author, year, read);
+          myLibrary.push(newBook);
+          renderLibrary();
 
-        addBookDialog.close();
-        dialogContainer.remove();
+          addBookDialog.close();
+          dialogContainer.remove();
+        }
       });
     });
 };
