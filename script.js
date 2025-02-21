@@ -19,9 +19,10 @@ const myLibrary = [
 ];
 
 //Render a book card
-function renderBook(book) {
+function renderBook(book, index) {
   const card = document.createElement("div");
   card.className = "card";
+  card.dataset.index = index;
 
   const title = document.createElement("div");
   title.className = "title";
@@ -59,16 +60,38 @@ function renderBook(book) {
   };
   card.appendChild(read);
 
+  const eraseBtn = document.createElement("button");
+  eraseBtn.className = "erase-btn";
+  eraseBtn.innerText = "x";
+  eraseBtn.onclick = () => {
+    myLibrary.splice(index, 1);
+    renderLibrary();
+  };
+  card.appendChild(eraseBtn);
+
   container.appendChild(card);
 }
 
 //Render Library
 function renderLibrary() {
   container.innerHTML = "";
-  myLibrary.forEach((book) => {
-    renderBook(book);
-  });
+  if (myLibrary.length === 0) {
+    const emptyContainer = document.createElement("h2");
+    emptyContainer.className = "empty-container";
+    emptyContainer.innerText = "Click the button to add books";
+    container.appendChild(emptyContainer);
 
+    container.style.flexDirection = "column";
+    container.style.gap = 0;
+    plusBtn.style.fontSize = "5.5em";
+  } else {
+    container.style = false;
+    plusBtn.style = false;
+
+    myLibrary.forEach((book, index) => {
+      renderBook(book, index);
+    });
+  }
   //Render new book button
   newBookBtn.appendChild(plusBtn);
   container.appendChild(newBookBtn);
@@ -85,8 +108,6 @@ plusBtn.innerText = "📚";
 renderLibrary();
 
 //Add new book function
-
-// take params, create a book then store it in the array
 plusBtn.onclick = () => {
   fetch("dialog.html")
     .then((response) => response.text())
@@ -117,11 +138,7 @@ plusBtn.onclick = () => {
         renderLibrary();
 
         addBookDialog.close();
-        dialogContainer.remove(); // Elimina el contenedor del diálogo del DOM
+        dialogContainer.remove();
       });
-    })
-    .catch((error) => {
-      console.warn("Something went wrong.", error);
-      alert("Something went wrong");
     });
 };
