@@ -1,4 +1,4 @@
-//Book object constructor
+// Book object constructor
 function Book(title, author, year, read) {
   this.title = title;
   this.author = author;
@@ -6,12 +6,17 @@ function Book(title, author, year, read) {
   this.read = read;
 }
 
-//Initiate and display books
+// Add toggleReadStatus method to Book prototype
+Book.prototype.toggleReadStatus = function (readButton) {
+  this.read = !this.read;
+  readButton.innerHTML = `<p>Read: ${this.read ? "Yes" : "No"}</p>`;
+  readButton.style.backgroundColor = this.read ? "#90EE90" : "#FFCCCB";
+};
 
-//Get container
+// Get container
 const container = document.getElementById("container");
 
-//Create book cards to display in the container
+// Create book cards to display in the container
 const myLibrary = [
   new Book("A Game of Thrones", "George R. R. Martin", 1996, true),
   new Book("A Clash of Kings", "George R. R. Martin", 1998, true),
@@ -41,22 +46,10 @@ function renderBook(book, index) {
 
   const read = document.createElement("button");
   read.className = "read";
-  read.innerHTML = `<p>Read: ${book.read === true ? "Yes" : "No"}</p>`;
-
-  const lightGreen = "#90EE90",
-    lightRed = "#FFCCCB";
-
-  read.style.backgroundColor = book.read === true ? lightGreen : lightRed;
+  read.innerHTML = `<p>Read: ${book.read ? "Yes" : "No"}</p>`;
+  read.style.backgroundColor = book.read ? "#90EE90" : "#FFCCCB";
   read.onclick = () => {
-    if (book.read === true) {
-      read.style.backgroundColor = lightRed;
-      read.innerHTML = "<p>Read: No</p>";
-      book.read = false;
-    } else {
-      read.style.backgroundColor = lightGreen;
-      read.innerHTML = "<p>Read: Yes</p>";
-      book.read = true;
-    }
+    book.toggleReadStatus(read);
   };
   card.appendChild(read);
 
@@ -72,7 +65,7 @@ function renderBook(book, index) {
   container.appendChild(card);
 }
 
-//Render Library
+// Render Library
 function renderLibrary() {
   container.innerHTML = "";
   if (myLibrary.length === 0) {
@@ -92,12 +85,12 @@ function renderLibrary() {
       renderBook(book, index);
     });
   }
-  //Render new book button
+  // Render new book button
   newBookBtn.appendChild(plusBtn);
   container.appendChild(newBookBtn);
 }
 
-//New book button
+// New book button
 const newBookBtn = document.createElement("div");
 newBookBtn.className = "new-book-card";
 
@@ -107,7 +100,7 @@ plusBtn.innerText = "📚";
 
 renderLibrary();
 
-//Add new book function
+// Add new book function
 plusBtn.onclick = () => {
   fetch("dialog.html")
     .then((response) => response.text())
