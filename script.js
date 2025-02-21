@@ -68,11 +68,13 @@ function renderLibrary() {
   myLibrary.forEach((book) => {
     renderBook(book);
   });
+
+  //Render new book button
+  newBookBtn.appendChild(plusBtn);
+  container.appendChild(newBookBtn);
 }
 
-renderLibrary();
-
-//Add new book button
+//New book button
 const newBookBtn = document.createElement("div");
 newBookBtn.className = "new-book-card";
 
@@ -80,8 +82,7 @@ const plusBtn = document.createElement("h2");
 plusBtn.className = "plus-button";
 plusBtn.innerText = "📚";
 
-newBookBtn.appendChild(plusBtn);
-container.appendChild(newBookBtn);
+renderLibrary();
 
 //Add new book function
 
