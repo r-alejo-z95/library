@@ -37,6 +37,7 @@ h1 {
   box-sizing: border-box;
   flex: 1 1 200px;
   max-width: 300px;
+  position: relative;
 }
 
 .new-book-card {
@@ -68,7 +69,7 @@ h1 {
 
 .read:hover {
   transform: scale(1.03);
-  background-color: #e0e0e0;
+  background-color: #45a049;
 }
 
 .card .title {
@@ -101,5 +102,73 @@ h1 {
   cursor: pointer;
   transition: 0.1s;
   font-size: 1em;
+  color: #fff;
+}
+
+dialog#addBookDialog {
+  border: none;
+  border-radius: 12px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  background-color: #ffffff;
+  max-width: 400px;
+  width: 50%;
+}
+
+dialog#addBookDialog form {
+  display: flex;
+  flex-direction: column;
+}
+
+dialog#addBookDialog label {
+  display: block;
+  margin-bottom: 5px;
   color: #333;
+  font-weight: bold;
+}
+
+dialog#addBookDialog input[type="text"],
+dialog#addBookDialog input[type="number"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  box-sizing: border-box;
+}
+
+dialog#addBookDialog input[type="checkbox"] {
+  margin-left: 10px;
+}
+
+dialog#addBookDialog menu {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+dialog#addBookDialog button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+dialog#addBookDialog button#cancel {
+  background-color: #607d8b;
+  color: #ffffff;
+}
+
+dialog#addBookDialog button#cancel:hover {
+  background-color: #455a64;
+}
+
+dialog#addBookDialog button#submit {
+  background-color: #2196f3;
+  color: #ffffff;
+}
+
+dialog#addBookDialog button#submit:hover {
+  background-color: #1976d2;
 }

@@ -10,7 +10,7 @@ function Book(title, author, year, read) {
 Book.prototype.toggleReadStatus = function (readButton) {
   this.read = !this.read;
   readButton.innerHTML = `<p>Read: ${this.read ? "Yes" : "No"}</p>`;
-  readButton.style.backgroundColor = this.read ? "#90EE90" : "#FFCCCB";
+  readButton.style.backgroundColor = this.read ? "#4caf50" : "#ff4d4d";
 };
 
 // Get container
@@ -47,7 +47,7 @@ function renderBook(book, index) {
   const read = document.createElement("button");
   read.className = "read";
   read.innerHTML = `<p>Read: ${book.read ? "Yes" : "No"}</p>`;
-  read.style.backgroundColor = book.read ? "#90EE90" : "#FFCCCB";
+  read.style.backgroundColor = book.read ? "#4caf50" : "#ff4d4d";
   read.onclick = () => {
     book.toggleReadStatus(read);
   };
