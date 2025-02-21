@@ -86,15 +86,20 @@ h1 {
 .card .year p,
 .card .read p {
   margin: 5px 0;
+}
+
+.card .author p,
+.card .year p {
   color: #666;
 }
 
 .read {
-  background-color: #fff;
   border: 1px solid #ddd;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  padding: 2px;
+  padding: 2px 5px 2px 5px;
   cursor: pointer;
   transition: 0.1s;
+  font-size: 1em;
+  color: #333;
 }

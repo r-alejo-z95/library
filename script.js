@@ -53,7 +53,7 @@ myLibrary.forEach((book) => {
   year.innerHTML = `<p>${book.year}</p>`;
   card.appendChild(year);
 
-  const read = document.createElement("div");
+  const read = document.createElement("button");
   read.className = "read";
   read.innerHTML = `<p>Read: ${book.read === true ? "Yes" : "No"}</p>`;
 
@@ -61,12 +61,17 @@ myLibrary.forEach((book) => {
     lightRed = "#FFCCCB";
 
   read.style.backgroundColor = book.read === true ? lightGreen : lightRed;
-  if (book.read) {
-    read.onclick = () => {
+  read.onclick = () => {
+    if (book.read === true) {
       read.style.backgroundColor = lightRed;
-      // book.read = false;
-    };
-  }
+      read.innerHTML = "<p>Read: No</p>";
+      book.read = false;
+    } else {
+      read.style.backgroundColor = lightGreen;
+      read.innerHTML = "<p>Read: Yes</p>";
+      book.read = true;
+    }
+  };
   card.appendChild(read);
 
   container.appendChild(card);
