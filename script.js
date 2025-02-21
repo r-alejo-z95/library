@@ -92,5 +92,23 @@ container.appendChild(newBookBtn);
 
 // take params, create a book then store it in the array
 plusBtn.onclick = () => {
-  container.style.backgroundColor = "red";
+  fetch("dialog.html")
+    .then((response) => response.text())
+    .then((html) => {
+      const dialogContainer = document.createElement("div");
+      dialogContainer.innerHTML = html;
+      document.body.appendChild(dialogContainer);
+
+      const addBookDialog = document.getElementById("addBookDialog");
+      addBookDialog.showModal();
+
+      const cancelButton = document.getElementById("cancel");
+      cancelButton.addEventListener("click", function () {
+        addBookDialog.close();
+      });
+    })
+    .catch((error) => {
+      console.warn("Something went wrong.", error);
+      alert("Something went wrong");
+    });
 };
