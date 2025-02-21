@@ -11,30 +11,15 @@ function Book(title, author, year, read) {
 //Get container
 const container = document.getElementById("container");
 
-//Display demo books
-const demoBook1 = new Book(
-  "A Game of Thrones",
-  "George R. R. Martin",
-  1996,
-  true
-);
-const demoBook2 = new Book(
-  "A Clash of Kings",
-  "George R. R. Martin",
-  1998,
-  true
-);
-const demoBook3 = new Book(
-  "A Storm of Swords",
-  "George R. R. Martin",
-  2000,
-  false
-);
-
 //Create book cards to display in the container
-const myLibrary = [demoBook1, demoBook2, demoBook3];
+const myLibrary = [
+  new Book("A Game of Thrones", "George R. R. Martin", 1996, true),
+  new Book("A Clash of Kings", "George R. R. Martin", 1998, true),
+  new Book("A Storm of Swords", "George R. R. Martin", 2000, false),
+];
 
-myLibrary.forEach((book) => {
+//Render a book card
+function renderBook(book) {
   const card = document.createElement("div");
   card.className = "card";
 
@@ -75,7 +60,17 @@ myLibrary.forEach((book) => {
   card.appendChild(read);
 
   container.appendChild(card);
-});
+}
+
+//Render Library
+function renderLibrary() {
+  container.innerHTML = "";
+  myLibrary.forEach((book) => {
+    renderBook(book);
+  });
+}
+
+renderLibrary();
 
 //Add new book button
 const newBookBtn = document.createElement("div");
@@ -105,6 +100,23 @@ plusBtn.onclick = () => {
       const cancelButton = document.getElementById("cancel");
       cancelButton.addEventListener("click", function () {
         addBookDialog.close();
+      });
+
+      const submitButton = document.getElementById("submit");
+      submitButton.addEventListener("click", function (event) {
+        event.preventDefault();
+
+        const title = document.getElementById("title").value;
+        const author = document.getElementById("author").value;
+        const year = document.getElementById("year").value;
+        const read = document.getElementById("read").checked;
+
+        const newBook = new Book(title, author, year, read);
+        myLibrary.push(newBook);
+        renderLibrary();
+
+        addBookDialog.close();
+        dialogContainer.remove(); // Elimina el contenedor del diálogo del DOM
       });
     })
     .catch((error) => {
