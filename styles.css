@@ -172,3 +172,7 @@ dialog#addBookDialog button#submit {
 dialog#addBookDialog button#submit:hover {
   background-color: #1976d2;
 }
+
+footer {
+  margin-top: 40px;
+}
